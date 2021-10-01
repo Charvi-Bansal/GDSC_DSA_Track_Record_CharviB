@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+        int sum1=0,sum2=0;
+        int p=0;
+        int n=nums.size();
+        
+        for(int i=1;i<n;i++){
+            sum2+=nums[i];
+        }
+        
+        int flag=0;
+        
+        if(sum1 == sum2)
+            return 0;
+        
+        do{
+            sum1 += nums[p];
+            p++;
+            sum2 -= nums[p];
+            
+            if(sum1 == sum2){
+                flag=1;
+                return p;
+            }
+        }while(sum1 != sum2 && flag==0 && p<n);
+        
+        return -1;
+    }
+};
