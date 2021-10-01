@@ -1,0 +1,37 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;
+
+        int p1=0;
+         int p2 = p1+1;
+            
+        
+        while(p1 < nums.size()){
+           
+            if(p2 == nums.size()){
+                p1++;
+                p2 = p1+1;
+                continue;
+            }
+            
+            
+            if(target == nums[p1] + nums[p2]){
+                ans.push_back(p1);
+                ans.push_back(p2);
+                return ans;
+            }
+            else{
+                p2++;
+                continue;
+            }
+            
+            p1++;
+           
+        }
+        ans.push_back(-1);
+        ans.push_back(-1);
+        
+        return ans;
+    }
+};
