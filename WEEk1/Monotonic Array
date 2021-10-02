@@ -1,0 +1,39 @@
+class Solution {
+public:
+    bool check_inc(vector<int> nums){
+        int n=nums.size();
+        
+        for(int i=0;i<n-1;i++){
+            if(nums[i+1] < nums[i])
+                return false;
+            else if(nums[i+1] == nums[i])
+                continue;
+        }
+        return true;
+    }
+    
+     bool check_desc(vector<int> nums){
+        int n=nums.size();
+        
+        for(int i=0;i<n-1;i++){
+            if(nums[i+1] > nums[i])
+                return false;
+            else if(nums[i+1] == nums[i])
+                continue;
+        }
+        return true;
+    }
+    
+    
+    bool isMonotonic(vector<int>& nums) {
+        int n=nums.size();
+        for(int i=0;i<n-1;i++){
+            if(nums[i+1] > nums[i])
+                return check_inc(nums);
+            else if(nums[i+1] < nums[i])
+                return check_desc(nums);
+            else continue;
+        }
+        return true;
+    }
+};
