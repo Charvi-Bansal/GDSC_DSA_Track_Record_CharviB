@@ -1,0 +1,59 @@
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int n=nums.size();
+        int first=0;
+        int last=n;
+        int mid=(first+last)/2;
+        int p1,p2;
+       
+        
+        vector<int> ans;
+        
+         
+        if(nums.empty()){
+            ans.push_back(-1);
+            ans.push_back(-1);
+            return ans;
+        }
+        else if(nums.size() == 1 && nums[0] != target){
+            ans.push_back(-1);
+            ans.push_back(-1);
+            return ans;
+        }
+        else if(nums.size() == 1 && nums[0]==target){
+            ans.push_back(0);
+            ans.push_back(0);
+            return ans;
+        } 
+        
+        
+        while(first<=last){
+            if(target < nums[mid]){
+                last = mid-1;
+                mid=(first+last)/2;
+            }
+            else if(target > nums[mid]){
+                first = mid+1;
+                mid=(first+last)/2;
+            }
+            else{
+                ans.push_back(mid);
+                p1 = mid;
+                p2=p1+1;
+                repeat:
+                
+                if(nums[p1] == nums[p2]){
+                    p2++;
+                    goto repeat;
+                }
+                ans.push_back(p2-1);
+                
+                return ans;
+            }
+        }
+        ans.push_back(-1);
+        ans.push_back(-1);
+        return ans;
+    }
+};
