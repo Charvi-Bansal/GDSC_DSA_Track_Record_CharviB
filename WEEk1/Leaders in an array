@@ -3,27 +3,20 @@ class Solution{
     //Function to find the leaders in the array.
     public:
     vector<int> leaders(int a[], int n){
-        int i=0,j=0;
+        int i=n-2;
+        int maxm = a[n-1];
         vector<int> ans;
         
-        while(j<n && i<n){
-            if(a[j] > a[i]){
-                i=j;
-                j=i+1;
+        ans.push_back(maxm);
+        while(i>=0){
+            if(a[i] >= maxm){
+                maxm = a[i];
+                ans.push_back(maxm);
             }
-            else
-            j++;
-            
-            if(j == n){
-                ans.push_back(a[i]);
-                i++;
-                j=i+1;
-            }
-            if(i==n-1)
-            ans.push_back(a[i]);
+            i--;
         }
         
+        reverse(ans.begin(), ans.end());
         return ans;
-        
     }
 };
