@@ -7,16 +7,13 @@ class Solution{
     long int immediateSmaller(int arr[], int n, int x){
         int i=0;
         long int temp;
-        temp=arr[0];
+        temp=-1;
         
         while(i<n){
-            if(arr[i] <= x && arr[i] > temp)
+            if(arr[i] < x && arr[i] > temp)
             temp=arr[i];
             i++;
         }
-        
-        if(temp==arr[0])
-        return -1;
         
         return temp;
     }
