@@ -1,0 +1,29 @@
+
+class Solution{
+    //Function to find the leaders in the array.
+    public:
+    vector<int> leaders(int a[], int n){
+        int i=0,j=0;
+        vector<int> ans;
+        
+        while(j<n && i<n){
+            if(a[j] > a[i]){
+                i=j;
+                j=i+1;
+            }
+            else
+            j++;
+            
+            if(j == n){
+                ans.push_back(a[i]);
+                i++;
+                j=i+1;
+            }
+            if(i==n-1)
+            ans.push_back(a[i]);
+        }
+        
+        return ans;
+        
+    }
+};
