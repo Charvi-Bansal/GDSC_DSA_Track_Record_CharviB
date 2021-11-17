@@ -1,0 +1,24 @@
+class Solution {
+public:    
+     void auxi(vector<char>& s,int i,int j){
+        int t=s[i];
+         s[i]=s[j];
+         s[j]=t;
+         
+         i++;
+         j--;
+         if(i>=j)
+             return;
+         auxi(s,i,j);
+    }
+    
+    void reverseString(vector<char>& s) {
+        int i=0;
+        int j=s.size()-1;
+        auxi(s,i,j);
+        
+        for(int idx=0;idx<s.size();idx++)
+            cout<<s[idx];
+    }
+   
+};
