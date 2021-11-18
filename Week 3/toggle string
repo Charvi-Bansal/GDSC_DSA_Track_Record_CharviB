@@ -1,0 +1,18 @@
+// Write your code here
+#include<iostream>
+#include<string.h>
+using namespace std;
+int main(){
+    string name;
+cin>>name;
+for(int i=0;i<name.size(); i++){
+    if(name[i]>=97 && name[i]<=122){
+        name[i] = name[i] - 32;
+    }
+    else{
+        name[i] = name[i] + 32;
+    }
+}
+cout<<name;
+return 0;
+}
