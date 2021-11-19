@@ -1,0 +1,46 @@
+class Solution {
+public:
+    void rotate_90(vector<vector<int>>& mat){
+        int n=mat.size();
+        //transpose the matrix
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                int t=mat[i][j];
+                mat[i][j]=mat[j][i];
+                mat[j][i]=t;
+            }
+        }
+        
+        //swap columns
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n/2;j++){
+                int t=mat[i][j];
+                mat[i][j]=mat[i][n-j-1];
+                mat[i][n-j-1]=t;
+            }
+        }
+    }
+    
+    bool findRotation(vector<vector<int>>& mat, vector<vector<int>>& target) {
+        int flag, idx=1;
+        int n=mat.size();
+        while(idx<=4){
+            rotate_90(mat);
+            flag=0;
+        //check if rotated matrix mat and target matrix are equal
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(mat[i][j]!=target[i][j])
+                    flag=1;
+            }
+        }
+            if(flag==0)
+                return true;
+            
+            idx++;
+        }
+        
+        return false;
+        
+    }
+};
